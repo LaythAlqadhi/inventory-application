@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1 Title: #{title}
+  p= category.description
+
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Items
+
+    hr
+    ul
+    each item in items
+      li
+        a(herf=item.url) #{item.name}
+        p= item.category.name
+        p= item.description
+        p
+          b Price: $#{item.price}
+        p
+          b Number In Stock: #{item.number_in_stock}
+
+    else
+      li There are no items of this category in the inventory.
+
+  hr
+  p
+    a(href=category.url+'/delete') Delete Category
+  p
+    a(href=category.url+'/update') Update Category
